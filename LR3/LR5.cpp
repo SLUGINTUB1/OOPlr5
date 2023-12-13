@@ -4,9 +4,11 @@
 
 Mark* dynamicmarks[5];
 Mark staticmarks[5];
+vector<Entrance_exams*> menures;
 void Service_Static(int value);
 void Service_Dinamic(int value);
 void Service(const char* fileName, Applicant* obj);
+void task8();
 
 int main() {
 	//task 3
@@ -94,6 +96,11 @@ int main() {
 
 	baseObj = &derivedObj;
 	baseObj->task4();
+	cout << endl;
+	//task 8
+	task8();
+	cout << endl;
+	task8();
 }
 // task 6
 void Service_Static(int value) {
@@ -137,3 +144,48 @@ void Service(const char* fileName, Applicant* obj) {
 
 }
 
+//task 8
+void task8(){
+	cout << "TASK 8" << endl;
+
+	cout << "craste or delete:" << endl;
+	cout << "1 - Applicant" << endl;
+	cout << "2 - Teacher" << endl;
+	
+	int action;
+	cin >> action;
+
+	if (action == 1) {
+		cout << "Choose object that you want create and delete:" << endl;
+
+		cout << "1 - Applicant" << endl;
+		cout << "2 - Teacher" << endl;
+		cout << "3 - Faculty" << endl;
+		int a;
+		cin >> a;
+
+		Entrance_exams* res;
+
+		switch (a)
+		{
+		case 1: {
+			res = new Applicant("Max", "Pasicnik", "Kostiantinovich", false, "234234", "234234");
+		}break;
+		case 2: {
+			res = new Teacher("Max", "Pasicnik", "Kostiantinovich", false, "234234", "234234", 001);
+		}break;
+		case 3: {
+			res = new Faculty("KI", "001", "Max", "Pasicnik", "Kostiantinovich", 2023);
+		}break;
+		default:
+			cout << "This class doesnt exist" << endl;
+		}
+		menures.push_back(res);
+	}
+	else {
+		cout << "What object you want to delete:" << endl;
+		int a;
+		cin >> a;
+		menures.erase(menures.begin() + a);
+	}
+}
